@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>मोबाइल लॉगिन पेज</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 15px;
+        }
+        
+        .login-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 350px;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+        
+        p {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+        
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #555;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        input:focus {
+            border-color: #6a11cb;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(106, 17, 203, 0.2);
+        }
+        
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        
+        .remember {
+            display: flex;
+            align-items: center;
+        }
+        
+        .remember input {
+            width: auto;
+            margin-right: 6px;
+        }
+        
+        .forgot {
+            color: #6a11cb;
+            text-decoration: none;
+        }
+        
+        .login-btn {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 14px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 15px;
+        }
+        
+        .login-btn:active {
+            transform: scale(0.98);
+        }
+        
+        .signup {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .signup a {
+            color: #6a11cb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">A</div>
+        <h1>अपने अकाउंट में लॉगिन करें</h1>
+        <p>अपनी जानकारी दर्ज करके जारी रखें</p>
+        
+        <form>
+            <div class="input-group">
+                <label for="email">ईमेल या यूज़रनेम</label>
+                <input type="text" id="email" placeholder="आपका ईमेल या यूज़रनेम" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="password">पासवर्ड</label>
+                <input type="password" id="password" placeholder="आपका पासवर्ड" required>
+            </div>
+            
+            <div class="remember-forgot">
+                <div class="remember">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">मुझे याद रखें</label>
+                </div>
+                <a href="#" class="forgot">पासवर्ड भूल गए?</a>
+            </div>
+            
+            <button type="submit" class="login-btn">लॉगिन करें</button>
+            
+            <div class="signup">
+                अकाउंट नहीं है? <a href="#">साइन अप करें</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if(email && password) {
+                alert('लॉगिन सफल! आपको रीडायरेक्ट किया जा रहा है...');
+            } else {
+                alert('कृपया सभी फ़ील्ड भरें');
+            }
+        });
+    </script>
+</body>
+</html>
