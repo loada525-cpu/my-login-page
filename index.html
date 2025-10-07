@@ -832,8 +832,62 @@
             }
         });
     </script>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+
+<script>
+    // Firebase Configuration - YAHAN APNA CONFIG PASTE KAREN
+    const firebaseConfig = {
+        apiKey: "YOUR_API_KEY_HERE",
+        authDomain: "YOUR_AUTH_DOMAIN_HERE",
+        projectId: "YOUR_PROJECT_ID_HERE", 
+        storageBucket: "YOUR_STORAGE_BUCKET_HERE",
+        messagingSenderId: "YOUR_SENDER_ID_HERE",
+        appId: "YOUR_APP_ID_HERE"
+    };
+
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // Check Login Status
+    auth.onAuthStateChanged((user) => {
+        const nav = document.querySelector('nav');
+        const authButtons = nav.querySelector('.auth-buttons');
+        
+        if (user) {
+            // User is logged in - Show Profile
+            authButtons.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="background: white; color: #6a11cb; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                        ${user.email.charAt(0).toUpperCase()}
+                    </div>
+                    <button onclick="logout()" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid white; padding: 6px 15px; border-radius: 20px; cursor: pointer; font-size: 14px;">
+                        Logout
+                    </button>
+                </div>
+            `;
+        } else {
+            // User is not logged in - Show Login/Signup
+            authButtons.innerHTML = `
+                <a href="login.html" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid white; padding: 8px 20px; border-radius: 25px; cursor: pointer; text-decoration: none;">Login</a>
+                <a href="signup.html" style="background: white; color: #6a11cb; border: 1px solid white; padding: 8px 20px; border-radius: 25px; cursor: pointer; text-decoration: none; margin-left: 10px; font-weight: bold;">Sign Up</a>
+            `;
+        }
+    });
+
+    // Logout Function
+    function logout() {
+        auth.signOut().then(() => {
+            alert('Logged out successfully!');
+            window.location.reload();
+        });
+    }
+</script>
 </body>
 </html>
+
 
 
 
