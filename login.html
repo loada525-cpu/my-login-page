@@ -118,6 +118,23 @@
             color: #721c24;
             border: 1px solid #f5c6cb;
         }
+        
+        .loading {
+            display: none;
+            color: #6a11cb;
+            margin-top: 10px;
+        }
+        
+        .forgot-password {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        
+        .forgot-password a {
+            color: #6a11cb;
+            text-decoration: none;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -138,7 +155,12 @@
                 <input type="password" id="password" placeholder="Enter your password" required>
             </div>
             
+            <div class="forgot-password">
+                <a href="#" onclick="forgotPassword()">Forgot Password?</a>
+            </div>
+            
             <button type="submit" class="submit-btn">Login</button>
+            <div id="loading" class="loading">Logging in...</div>
         </form>
         
         <div class="switch-auth">
@@ -146,35 +168,80 @@
         </div>
     </div>
 
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+
     <script>
+       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDPaKz4PfEPbW4ZtoSRSADeCCaFhHv2Tl8",
+  authDomain: "mystore-app-b7ac5.firebaseapp.com",
+  projectId: "mystore-app-b7ac5",
+  storageBucket: "mystore-app-b7ac5.firebasestorage.app",
+  messagingSenderId: "856794470181",
+  appId: "1:856794470181:web:924bcb21aa570659a4eccc",
+  measurementId: "G-E7S6F40BWT"
+};
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Login Function
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             
-            const messageDiv = document.getElementById('message');
+            // Show loading
+            document.getElementById('loading').style.display = 'block';
             
-            // Get users from localStorage
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-            
-            // Find user
-            const user = users.find(u => u.email === email && u.password === password);
-            
-            if (user) {
-                // Save current user session
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                
-                showMessage('Login successful! Redirecting...', 'success');
-                
-                // Redirect to home page
-                setTimeout(() => {
-                    window.location.href = 'index.html';
-                }, 1500);
-            } else {
-                showMessage('Invalid email or password!', 'error');
-            }
+            // Firebase Login
+            auth.signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Login successful
+                    showMessage('Login successful! Redirecting...', 'success');
+                    
+                    // Redirect to home page
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1500);
+                })
+                .catch((error) => {
+                    let errorMessage = 'Login failed!';
+                    if (error.code === 'auth/user-not-found') {
+                        errorMessage = 'No account found with this email!';
+                    } else if (error.code === 'auth/wrong-password') {
+                        errorMessage = 'Incorrect password!';
+                    } else if (error.code === 'auth/invalid-email') {
+                        errorMessage = 'Invalid email address!';
+                    } else if (error.code === 'auth/too-many-requests') {
+                        errorMessage = 'Too many failed attempts. Try again later!';
+                    }
+                    showMessage(errorMessage, 'error');
+                })
+                .finally(() => {
+                    document.getElementById('loading').style.display = 'none';
+                });
         });
+        
+        // Forgot Password Function
+        function forgotPassword() {
+            const email = prompt('Please enter your email address:');
+            if (email) {
+                auth.sendPasswordResetEmail(email)
+                    .then(() => {
+                        alert('Password reset email sent! Check your inbox.');
+                    })
+                    .catch((error) => {
+                        alert('Error: ' + error.message);
+                    });
+            }
+        }
         
         function showMessage(text, type) {
             const messageDiv = document.getElementById('message');
@@ -184,9 +251,9 @@
         }
         
         // Check if user is already logged in
-        window.addEventListener('load', function() {
-            const currentUser = localStorage.getItem('currentUser');
-            if (currentUser) {
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                // User is signed in, redirect to home
                 window.location.href = 'index.html';
             }
         });
