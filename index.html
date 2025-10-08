@@ -553,6 +553,53 @@
     font-weight: bold;
     color: white;
 } 
+   /* Navigation Layout Fix */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-bar {
+    flex: 1;
+    max-width: 500px;
+    margin: 0 20px;
+    position: relative;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.9);
+}
+
+.search-bar button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #6a11cb;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+}
     </style>
 </head>
 <body>
@@ -915,6 +962,7 @@ const firebaseConfig = {
 </script>
 </body>
 </html>
+
 
 
 
