@@ -638,11 +638,79 @@ nav {
     </header>
 
     <!-- HERO SECTION -->
-    <section class="hero" id="home">
-        <h1>Great Shopping Experience</h1>
-        <p>Discover millions of products at amazing prices with fast delivery across India</p>
-        <button class="cta-button" onclick="scrollToProducts()">Start Shopping Now</button>
-    </section>
+   <section class="hero" id="home" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 80px 0; text-align: center;">
+    <h1 style="font-size: 3rem; margin-bottom: 20px;">Great Shopping Experience</h1>
+    <p style="font-size: 1.2rem; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+        Discover millions of products at amazing prices with fast delivery across India
+    </p>
+    <button class="cta-button" onclick="scrollToProducts()" style="background: #ffd700; color: #333; border: none; padding: 15px 30px; font-size: 1.1rem; border-radius: 30px; cursor: pointer; font-weight: bold;">
+        Start Shopping Now
+    </button>
+</section>
+
+<!-- Kaira Collections Section -->
+<section id="billboard" class="bg-light py-5" style="background: #f8f9fa; padding: 80px 0;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <h1 class="section-title text-center mt-4" style="font-size: 2.5rem; margin-bottom: 30px;">New Collections</h1>
+            <div class="col-md-6 text-center">
+                <p style="font-size: 1.1rem; color: #666;">Check out our latest fashion collections with premium quality and amazing designs</p>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Product 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="product-card" style="background: white; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    <div class="image-holder" style="margin-bottom: 15px;">
+                        <img src="https://images.unsplash.com/photo-1595341888016-a392ef81b7de?w=400" alt="product" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="product-content py-2">
+                        <h5 style="font-size: 1.2rem; margin-bottom: 10px; color: #333;">Premium Jacket</h5>
+                        <p style="color: #666; margin-bottom: 15px;">High quality leather jacket with modern design</p>
+                        <div class="price" style="font-size: 1.3rem; font-weight: bold; color: #6a11cb; margin-bottom: 15px;">₹2,999</div>
+                        <button class="add-to-cart" onclick="addToCart('Premium Jacket', 2999)" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; width: 100%;">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="product-card" style="background: white; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    <div class="image-holder" style="margin-bottom: 15px;">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="product" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="product-content py-2">
+                        <h5 style="font-size: 1.2rem; margin-bottom: 10px; color: #333;">Sports Shoes</h5>
+                        <p style="color: #666; margin-bottom: 15px;">Comfortable running shoes for everyday wear</p>
+                        <div class="price" style="font-size: 1.3rem; font-weight: bold; color: #6a11cb; margin-bottom: 15px;">₹1,999</div>
+                        <button class="add-to-cart" onclick="addToCart('Sports Shoes', 1999)" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; width: 100%;">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="product-card" style="background: white; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    <div class="image-holder" style="margin-bottom: 15px;">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400" alt="product" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="product-content py-2">
+                        <h5 style="font-size: 1.2rem; margin-bottom: 10px; color: #333;">Smart Watch</h5>
+                        <p style="color: #666; margin-bottom: 15px;">Fitness tracker with heart rate monitor</p>
+                        <div class="price" style="font-size: 1.3rem; font-weight: bold; color: #6a11cb; margin-bottom: 15px;">₹4,999</div>
+                        <button class="add-to-cart" onclick="addToCart('Smart Watch', 4999)" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; width: 100%;">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- FEATURES SECTION -->
     <section class="features">
@@ -962,6 +1030,7 @@ const firebaseConfig = {
 </script>
 </body>
 </html>
+
 
 
 
