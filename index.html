@@ -558,28 +558,34 @@
 <body>
     <!-- HEADER -->
     <header>
-      <div class="logo">
-    <img src="mystore-logo.png" alt="MyStore">
-    <span class="logo-text">MyStore</span>
-</div>
-            
-            <div class="search-bar">
-                <input type="text" placeholder="Search for products, brands and more...">
-                <button>🔍</button>
-            </div>
-            
-           <nav>
-    <a href="index.html">Home</a>
-    <a href="#categories">Categories</a>
-    <a href="#products">Products</a>
-    <a href="#offers">Offers</a>
-    <div class="cart-icon">
-        🛒
-        <span class="cart-count">0</span>
+    <nav>
+    <div class="logo">
+        <img src="mystore-logo.png" alt="MyStore" style="height: 35px;">
+        <span>MyStore</span>
     </div>
-    <div class="auth-buttons">
-        <!-- Yahan automatically buttons ayenge -->
+    
+    <div class="search-bar">
+        <input type="text" placeholder="Search for products, brands and more...">
+        <button>🔍</button>
     </div>
+    
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#products">Products</a>
+        <a href="#offers">Offers</a>
+    </div>
+    
+    <div class="nav-right">
+        <div class="cart-icon">
+            🛒
+            <span class="cart-count">0</span>
+        </div>
+        <div class="auth-buttons">
+            <!-- Yahan automatically buttons ayenge -->
+        </div>
+    </div>
+</nav>
 </nav>
         </div>
     </header>
@@ -909,6 +915,7 @@ const firebaseConfig = {
 </script>
 </body>
 </html>
+
 
 
 
